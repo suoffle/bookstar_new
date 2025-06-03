@@ -104,7 +104,14 @@
             method: "POST",
             dataType: "json",
             success: function(data) {
-                location.replace('{% url "main" %}');
+                alert(data.message);
+
+                // 온보딩 플래그가 있으면 온보딩으로, 없으면 로그인으로
+                if (data.redirect_to_onboarding) {
+                    location.replace("/user/onboarding/");
+                } else {
+                    location.replace("{% url 'login' %}");
+                }
             },
             error: function(request, status, error) {
                 let data = JSON.parse(request.responseText);

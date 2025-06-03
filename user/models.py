@@ -55,3 +55,24 @@ class Follow(models.Model):
 
     def __str__(self):
         return f"{self.from_user} → {self.to_user}"
+
+
+class UserPreference(models.Model):
+    user = models.OneToOneField('User', on_delete=models.CASCADE, related_name='preference')
+
+    # 온보딩 데이터
+    genres = models.JSONField(default=list)
+    goals = models.JSONField(default=list)
+    reading_time = models.CharField(max_length=50, blank=True)
+    reading_duration = models.CharField(max_length=50, blank=True)
+    reading_complexity = models.CharField(max_length=50, blank=True)
+    favorite_books = models.JSONField(default=list)
+    mood = models.JSONField(default=list)
+
+    # 상태 관리
+    onboarding_completed = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.user.name}의 선호도"
