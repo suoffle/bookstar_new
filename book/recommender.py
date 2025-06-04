@@ -37,7 +37,11 @@ class HybridRecommender:
             raise ValueError(f"[오류] user_id '{user_id}' 가 user2id에 존재하지 않습니다.")
 
         #  item_id가 item2id에 존재하는 데이터만 필터링
-        filtered_df = self.book_df[self.book_df['item_id'].isin(self.item2id)].reset_index(drop=True)
+        mask = self.book_df['item_id'].isin(self.item2id)
+        deduped_df = self.book_df[mask].drop_duplicates(subset='item_id')
+        unique_indices = deduped_df.index
+        filtered_df = deduped_df.reset_index(drop=True)
+
 
         with torch.no_grad():
             user_indices = [self.user2id[user_id]] * len(filtered_df)
@@ -53,7 +57,7 @@ class HybridRecommender:
         review_embedding = self.embedder.encode(user_review, convert_to_tensor=True, device=self.device)
 
         #  책 설명 필터링에 맞게 임베딩도 맞춤
-        filtered_embeddings = self.book_embeddings[self.book_df['item_id'].isin(self.item2id)]
+        filtered_embeddings = self.book_embeddings[unique_indices]
 
         #  유사도 계산
         sim_scores = util.pytorch_cos_sim(review_embedding, filtered_embeddings)[0].cpu().numpy()
@@ -64,7 +68,10 @@ class HybridRecommender:
         #  추천 상위 K개
         top_indices = final_scores.argsort()[-top_k:][::-1]
         recommendations = [
-            (filtered_df.iloc[i]['item_id'], filtered_df.iloc[i]['title'])
+            (filtered_df.iloc[i]['item_id'],
+            filtered_df.iloc[i]['title'],     # 1: 화면에 표시할 Title
+            filtered_df.iloc[i]['저자/역자']   # 2: 화면에 표시할 Author (원래 코드에 없었다면 이 줄을 추가)
+            )
             for i in top_indices
         ]
 

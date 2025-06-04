@@ -139,7 +139,7 @@
         if (data.results) {
           data.results.forEach((item, idx) => {
             const div = document.createElement("div");
-            div.innerText = `${idx + 1}. ${item[1]} (ID: ${item[0]})`;
+            div.innerText = `${idx + 1}. ${item[1]} (작가: ${item[2]})`;
             list.appendChild(div);
           });
         } else {
