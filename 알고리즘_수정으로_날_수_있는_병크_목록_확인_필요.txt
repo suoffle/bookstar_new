@@ -1,0 +1,38 @@
+6. 종합 정리 및 제안
+KeyError/IndexError 점검
+
+filtered_df.iloc[i]['저자/역자']: 반드시 '저자/역자' 컬럼이 있는지 확인
+
+JS에서 item[2] 접근: results 배열이 항상 길이 3 이상의 튜플을 포함하는지 확인
+
+빈 데이터(추천 대상 없음) 처리
+
+recommend() 내부에서 filtered_df.shape[0] == 0인지 검사해 두고, 빈 리스트 리턴 혹은 예외 메시지를 던지도록 방어 코드 추가
+
+파일·컬럼 불일치 확인
+
+book_descriptions.csv 쪽 컬럼명(‘책 제목’/‘소개글’/‘저자/역자’)이 실제로 일치하는지 반드시 재확인
+
+sarak_reviews_100users.csv에도 ‘책 제목’, ‘별점’ 컬럼이 들어 있는지 다시 체크
+
+임베딩 매핑(인덱스) 문제 방지
+
+self.book_df를 인스턴스가 생성된 후 다른 코드에서 절대로 변경하지 말고,
+
+“임베딩(=self.book_embeddings)”은 항상 self.book_df의 생성 시점과 동일한 순서이어야 하므로,
+이후 self.book_df를 건드려야 할 때는 별도 복제본을 만들어서 사용하십시오.
+
+뷰(View) 응답 포맷 통일
+
+JsonResponse(..., json_dumps_params={'ensure_ascii': False})를 붙여서 한글이 깨지지 않도록 통일적으로 응답을 주거나,
+
+JS에서도 data.error와 data.results를 모두 검사해 주는 로직을 넣으세요.
+
+템플릿/URL 이름
+
+기존에 쓰던 name='book_page', name='recommend_books' 등을 바꾸지 말고 그대로 두어야,
+
+이미 <a href="{% url 'book_page' %}"> 같은 식으로 참조 중인 곳이 깨지지 않습니다.
+
+위 사항들만 한 번 체크해 보시면, 수정으로 인해 발생할 수 있는 대부분의 런타임 오류를 예방할 수 있습니다.
+추가로 “실제 에러 메시지”가 나온다면, 그 스택 트레이스를 기반으로 다시 검토해 주세요!
