@@ -139,7 +139,7 @@
         if (data.results) {
           data.results.forEach((item, idx) => {
             const div = document.createElement("div");
-            div.innerText = `${idx + 1}. ${item[1]} (작가: ${item[2]})`;
+            div.innerText = `${idx + 1}. ${item[1]} (ID: ${item[0]})`;
             list.appendChild(div);
           });
         } else {
@@ -153,10 +153,37 @@
   });
 
   btn2.addEventListener("click", () => {
-    box2.style.display = "block";
-    box1.style.display = "none";
-    box3.style.display = "none";
+      box2.style.display = "block";
+      box1.style.display = "none";
+      box3.style.display = "none";
+
+      fetch("/book/opposite/?user_id=흙속에저바람속에")
+              .then(response => response.json())
+              .then(data => {
+                  const box = document.getElementById("box2");
+                  box.innerHTML = ""; // 기존 내용 초기화
+
+                  if (data.opposite_books) {
+                      data.opposite_books.forEach((item, idx) => {
+                          const div = document.createElement("div");
+                          div.className = "card p-3 mb-3";
+                          div.innerHTML = `
+              <h5>${idx + 1}. ${item[1]}</h5>
+              <p><strong>ID:</strong> ${item[0]}</p>
+              <p><strong>저자:</strong> ${item[2]}</p>
+            `;
+                          box.appendChild(div);
+                      });
+                  } else {
+                      box.innerHTML = "<p>추천 결과가 없습니다.</p>";
+                  }
+              })
+              .catch(error => {
+                  console.error("반대 추천 오류:", error);
+                  document.getElementById("box2").innerHTML = "<p>오류 발생</p>";
+              });
   });
+
 
   btn3.addEventListener("click", () => {
     box3.style.display = "block";

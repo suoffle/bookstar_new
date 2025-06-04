@@ -128,3 +128,11 @@ recommender = HybridRecommender(ncf_model, book_df, user2id, item2id, id2item, k
 # 6. 외부 호출용 함수
 def get_recommendations(user_id, user_review='', top_k=5):
     return recommender.recommend(user_id, user_review, top_k)
+
+#정해윤
+def get_opposite_recommendations(user_id, user_review='', bottom_k=5):
+    # 기존 recommend 로직을 그대로 따라가되, 점수 낮은 책들을 선택
+    all_scores = recommender.recommend(user_id, user_review, top_k=len(recommender.book_df))
+    # 점수가 낮은 순으로 정렬 (가장 선호도가 낮은 책들)
+    bottom_recommendations = all_scores[::-1][:bottom_k]
+    return bottom_recommendations
