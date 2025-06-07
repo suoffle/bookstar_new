@@ -5,28 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c831ed43-a7ab-43c7-87a8-fc4ba3dd05e1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/25__6__4___6_24_________Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/25__6__4___6_28_________Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/25__6__4__오후_6_24,_업데이트_전에_커밋되지_않은_변경_내용_[Changes]/db.sqlite3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/25__6__4__오후_6_24,_업데이트_전에_커밋되지_않은_변경_내용_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/25__6__4__오후_6_28,_업데이트_전에_커밋되지_않은_변경_내용_[Changes]/db.sqlite3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/25__6__4__오후_6_28,_업데이트_전에_커밋되지_않은_변경_내용_[Changes]/shelved.patch" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/book/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/book/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/content/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/content/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/like/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/like/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/like/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/like/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/like/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/like/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/like/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/like/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/book/recommend_book.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book/recommend_book.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/bookstar/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bookstar/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,6 +39,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "suoffle"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/suoffle/bookstar_new.git",
+    "accountId": "5faf0d99-817e-4ccb-aa0c-47661d9adf18"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -129,6 +132,7 @@
       <workItem from="1744871170558" duration="649000" />
       <workItem from="1746939159405" duration="10096000" />
       <workItem from="1748166515596" duration="24120000" />
+      <workItem from="1749251887245" duration="6780000" />
     </task>
     <servers />
   </component>

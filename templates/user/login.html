@@ -110,7 +110,7 @@
                 if (data.redirect_to_onboarding) {
                     location.replace("/user/onboarding/");
                 } else {
-                    location.replace("{% url 'login' %}");
+                    location.replace("{% url 'main' %}");
                 }
             },
             error: function(request, status, error) {

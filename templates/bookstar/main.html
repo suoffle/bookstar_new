@@ -387,7 +387,7 @@
             <div class="feed_name" style="justify-content: space-between">
                 <div style="display: flex; align-items: center;">
                     <div class="big_profile_box">
-                    <img class="profile_img" src="{% if user.profile_image %}/media/{{ user.profile_image }}{% else %}{% static 'images/default-profile.jpg' %}{% endif %}">
+                    <img class="profile_img" src="{% if user.profile_image %}/media/{{ user.profile_image }}{% else %}{% static 'images/default-image.jpg' %}{% endif %}">
                 </div>
                     <div class="name_content">
                         <span class="feed_name_txt">{{ user.name }}</span>
@@ -395,7 +395,8 @@
                     </div>
                 </div>
 
-                <a class="link_txt">전환</a>
+                <a class="link_txt" href="/user/profile/">전환</a>
+
             </div>
 
             <!--recommend friend-->
@@ -417,17 +418,12 @@
                             <span class="name_content_txt">{{ u.email }} 외 팔로워</span>
                         </div>
                         <a class="link_txt follow-button" data-user-id="{{ u.id }}">
-                            {% if u.is_following %}언팔로우{% else %}팔로우{% endif %}
+                            {#% if u.is_following %#}언팔로우{#% else %#}팔로우{#% endif %#}
                         </a>
                     </div>
                   {#% endif %#}
                 {#% endfor %#}
             -->
-
-
-
-
-
 
                 <!--recommend_mike-->
                 <div class="feed_name" style="justify-content: space-between">
@@ -436,10 +432,10 @@
                              src="https://i.namu.wiki/i/FaRIEh0bO8rL5x0rtBp3yMB8Q72tt_MGKpuHkHqgNaSXKRcXrXeWBh1C7Uhk2UO-TJjm-mH5glCNW6PRWLxLdg.webp">
                     </div>
                     <div class="name_content">
-                        <span class="feed_name_txt"> Mike </span>
+                        <span class="feed_name_txt"> {{ mike.name }} </span>
                         <span class="name_content_txt"> BookStar 신규가입</span>
                     </div>
-                    <a class="link_txt follow-button" data-user-id="9">
+                    <a class="link_txt follow-button" data-user-id="{{ mike.id }}">
                         {% if mike.is_following %}언팔로우{% else %}팔로우{% endif %}
                     </a>
                 </div>
@@ -451,7 +447,7 @@
                          src="https://i.namu.wiki/i/-C4dB5aFe0Ur8QNU2fi8-3w0Wg3qZyV7v9z90wgFgNVMDcZE8w5qlAfOkBpGCUiz4ovZtHMu3XTzgqlxj5ncbA.webp">
                     </div>
                     <div class="name_content">
-                        <span class="feed_name_txt">sulley</span>
+                        <span class="feed_name_txt">{{ sulley.name }}</span>
                         <span class="name_content_txt">suoffle 외 3명 팔로우</span>
                     </div>
                     <a class="link_txt follow-button" data-user-id="10">
@@ -733,36 +729,41 @@
         })
     }
 
-    //좋아요 이벤트 처리
+    //좋아요 토글
     $(".favorite").click(function (event) {
     let feed_id = event.target.getAttribute('feed_id');
     let favorite_id = event.target.id;
-    let favorite_text = $.trim($('#' + favorite_id).html());
+    let $el = $('#' + favorite_id);  // ← 이 줄 누락되어 있었음!
+    let favorite_text = $.trim($el.html());
 
-    //좋아요 토글
+    // UI 토글
     if (favorite_text === 'favorite') {
-        $('#' + favorite_id).html('favorite_border');
+        $el.html('favorite_border');
+        $el.css('color', '#acacac');
     } else {
-        $('#' + favorite_id).html('favorite');
+        $el.html('favorite');
+        $el.css('color', 'red');
     }
 
+    // AJAX 요청 (JSON 방식)
     $.ajax({
         url: "/api/toggle-like/",
-        data: {
+        method: "POST",
+        contentType: "application/json",  // ✅ 중요
+        data: JSON.stringify({
             feed_id: feed_id,
             favorite_text: favorite_text
-        },
-        method: "POST",
+        }),
         headers: { "X-CSRFToken": csrftoken },
         success: function (data) {
-            // 좋아요 숫자 업데이트
             $('#like-count_' + feed_id).text(data.like_count);
         },
         error: function () {
-            console.log("에러");
+            console.log("좋아요 처리 에러");
         }
-        });
     });
+});
+
 
         //bookmark
         $(".bookmark").click(function (event) {

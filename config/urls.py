@@ -17,8 +17,8 @@ Including another URLconf
 
 from django.urls import path
 from config.views import feed_search
-from .views import Main, UploadFeed
-from content.views import ToggleLike, ToggleBookmark
+from .views import UploadFeed
+from content.views import Main, ToggleLike, ToggleBookmark
 from user.views import ToggleFollow
 from content import views
 from django.conf import settings

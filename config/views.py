@@ -11,6 +11,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from user.models import User
 
+
+##사용x -> content views 사용
 class Main(APIView):
     def get(self,request):
         feed_list=Feed.objects.all().order_by('-id')

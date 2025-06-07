@@ -127,13 +127,13 @@ class Logout(APIView):
 class ToggleFollow(APIView):
     def post(self, request):
         email = request.session.get('email')
-        to_user_id = request.data.get('to_user_id')
+        to_user_id = request.POST.get('to_user_id')
 
         if not email or not to_user_id:
             return Response({'error': '잘못된 요청'}, status=400)
 
         from_user = User.objects.get(email=email)
-        to_user = User.objects.get(id=to_user_id)
+        to_user = User.objects.get(id=int(to_user_id))
 
         follow, created = Follow.objects.get_or_create(from_user=from_user, to_user=to_user)
         if not created:
