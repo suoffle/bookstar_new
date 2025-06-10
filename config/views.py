@@ -95,7 +95,7 @@ class UploadFeed(APIView):
 
 def feed_search(request):
     query = request.GET.get('q', '')
-    feeds = Feed.objects.filter(
+    feeds = Feed.objects.select_related('user').filter(
         Q(content__icontains=query) | Q(user__name__icontains=query)
     ) if query else []
 

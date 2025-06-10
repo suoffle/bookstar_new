@@ -97,10 +97,11 @@
     {% if feeds %}
       {% for feed in feeds %}
       <div class="card mb-3 shadow-sm" style="width: 100%; max-width: 600px;">
-        <div class="card-header d-flex align-items-center">
-          <img src="{{ feed.profile_image }}" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover; margin-right: 10px;">
-          <strong>{{ feed.user_id }}</strong>
-        </div>
+          <div class="card-header d-flex align-items-center">
+              <img src="{{ feed.profile_image }}" class="rounded-circle"
+                   style="width: 40px; height: 40px; object-fit: cover; margin-right: 10px;">
+              <strong>{{ feed.user.name }}</strong>
+          </div>
         <img src="{% if 'http' in feed.image %}{{ feed.image }}{% else %}{% get_media_prefix %}{{ feed.image }}{% endif %}" class="card-img-top" alt="feed image">
         <div class="card-body">
           <p class="card-text">{{ feed.content }}</p>
