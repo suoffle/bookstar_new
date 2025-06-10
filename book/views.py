@@ -3,9 +3,8 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from django.http import JsonResponse
 from .recommender import get_recommendations
-##정해윤
 from .recommender import get_opposite_recommendations
-##정해윤
+
 import requests
 from bs4 import BeautifulSoup
 from html import unescape
@@ -27,7 +26,7 @@ class RecommendBooks(APIView):
             import traceback
             print("[추천 오류]", traceback.format_exc())
             return JsonResponse({'error': str(e)}, status=500)
-##정해윤
+
 class DiscoverOppositeBooks(APIView):
     def get(self, request):
         user_id = request.GET.get('user_id', '흙속에저바람속에')
@@ -38,7 +37,6 @@ class DiscoverOppositeBooks(APIView):
             import traceback
             print("[반대 추천 오류]", traceback.format_exc())
             return JsonResponse({'error': str(e)}, status=500)
-##정해윤
 
 # ✅ 추가: 네이버 책 검색 API
 def clean_text(text):

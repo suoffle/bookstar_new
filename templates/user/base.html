@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}BookStar{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <a href="/">홈</a>
+        <a href="/user/profile/">내 프로필</a>
+
+        <!-- ✅ 닉네임 검색 폼 삽입 -->
+        <form method="get" action="{% url 'search_user' %}" style="display: inline-block; margin-left: 20px;">
+            <input type="text" name="q" placeholder="닉네임 검색"
+                   style="padding: 5px; border-radius: 5px; border: 1px solid #ccc;">
+            <button type="submit"
+                    style="padding: 5px 10px; border-radius: 5px; background-color: #007bff; color: white; border: none;">
+                검색
+            </button>
+        </form>
+    </nav>
+
+    <hr>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

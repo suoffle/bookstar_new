@@ -211,3 +211,15 @@ def skip_onboarding_view(request):
         messages.info(request, '나중에 설정에서 취향을 설정할 수 있습니다.')
 
     return redirect('/')
+#0610
+def search_user_view(request):
+    query = request.GET.get('q', '')
+    results = []
+
+    if query:
+        results = User.objects.filter(name__icontains=query)
+
+    return render(request, 'user/search_user.html', {
+        'query': query,
+        'results': results,
+    })

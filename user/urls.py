@@ -10,4 +10,5 @@ urlpatterns = [
     path('update-profile-image/', UpdateProfileImage.as_view(), name='update-profile'),
     path('onboarding/', views.onboarding_view, name='onboarding'),
     path('onboarding/skip/', views.skip_onboarding_view, name='skip_onboarding'),
+    path('search-user/', views.search_user_view, name='search_user'),
 ]
