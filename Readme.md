@@ -28,3 +28,30 @@ LitMatch에서는 NFC(Neural Collaborative Filtering)와 KoBERT 두 가지 방�
 - 사용자 및 리뷰 검색
 - 개인화 도서 추천
 - 온보딩 기반 Cold-Start 완화
+
+
+### 이미지
+
+#### 1. 홈 페이지(메인 화면)
+<img width="1240" height="671" alt="Image" src="https://github.com/user-attachments/assets/c8f747cf-7a92-4000-9805-44927b4c4ac2" /></br>
+
+#### 2. 게시글 작성 화면
+<img width="1254" height="900" alt="Image" src="https://github.com/user-attachments/assets/33e6552d-ca56-4127-b819-7b90a2a2d46b" /></br>
+
+#### 3. 도서 추천 페이지
+<img width="1365" height="561" alt="Image" src="https://github.com/user-attachments/assets/d08d86b8-f4ff-4c4f-b857-bdd4edfc6e86" /></br>
+
+#### 4. 회원가입 화면
+<img width="310" height="481" alt="Image" src="https://github.com/user-attachments/assets/56a259a0-c1bf-486e-92ff-b6713ce53c1f" /></br>
+
+#### 5. 로그인 화면
+<img width="310" height="389" alt="Image" src="https://github.com/user-attachments/assets/58eac33b-975a-46e0-b1da-9ce8aaab3320" /></br>
+
+
+
+
+
+
+
+
+
